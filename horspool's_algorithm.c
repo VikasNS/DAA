@@ -48,14 +48,14 @@ void main()
   gets(text);
   txt_len=strlen(text);
   
-  printf("Enter the patter to be found\n");
+  printf("Enter the pattern to be found\n");
   gets(pattern);
   pat_len=strlen(pattern);
   
   build_table(pattern);
   loc=find_pattern(text,pattern);
   
-  if(loc==-1) printf("Patter not found \n");
+  if(loc==-1) printf("Pattern not found \n");
   else printf("Pattern starts at %d",loc);
   
   
