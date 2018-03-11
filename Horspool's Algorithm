@@ -16,7 +16,7 @@ void build_table(char pattern[])
   for(j;j<pat_len-1;j++) table[pattern[j]]=pat_len-1-j;
 }
 
-int find_patter(char text[],char patter[])
+int find_pattern(char text[],char patter[])
 {
     int i,j,k;
     
@@ -53,7 +53,7 @@ void main()
   pat_len=strlen(pattern);
   
   build_table(pattern);
-  loc=find_patter(text,pattern);
+  loc=find_pattern(text,pattern);
   
   if(loc==-1) printf("Patter not found \n");
   else printf("Pattern starts at %d",loc);
