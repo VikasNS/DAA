@@ -62,7 +62,7 @@ void prins_algo()
     my_tree[0]=-1;
     
     
-    for(i=0;i<vertex_len-1;i++)
+    for(i=0;i<vertex_len;i++)
     {
       
       next=next_vertex();
