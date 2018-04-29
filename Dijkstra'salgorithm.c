@@ -42,7 +42,7 @@ void dijkstra(){
 		{
 			if(!tree[j])
 			{
-				if(adjacent_matrix[vertex][j])
+				if(adjacent_matrix[vertex][j]) //check if path exits
 				{
 					if(till_now_min[j]>(till_now_min[vertex]+adjacent_matrix[vertex][j]))
 				{
