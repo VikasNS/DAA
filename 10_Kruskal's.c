@@ -14,7 +14,8 @@ int im_linked_to[size]={-1,-1,-1,-1,-1,-1};
 
 int whos_my_parent(int vertex)
 {
-  //Importance of while loop is seen when we connect 2 separate graph (with atleast 2 vertices in each)
+  //Importance of while loop is seen when we connect 
+  //2 separate graph (with atleast 2 vertices in each)
   //Its helps us to find the parent in the above case
   while(im_linked_to[vertex]!=-1) vertex=im_linked_to[vertex];
   //printf("vertex im returning %d \n",vertex);
