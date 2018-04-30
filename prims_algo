@@ -33,20 +33,10 @@ void update_keys(int new_added_vertex)
   {
     if(dis_mat[new_added_vertex][i] && explored[i]==0 && dis_mat[new_added_vertex][i]<min_distance[i])
     {
-        printf("->WOW.! vertex %d is not in the tree and there is a path between %d and %d and it seems to be the newer path is a better choice so im updating the min distance matrix \n",i,new_added_vertex,i);      
         min_distance[i]=dis_mat[new_added_vertex][i];
-        
-        printf("->Let me add %d as the probable parent of %d \n",new_added_vertex,i);
         my_tree[i]=new_added_vertex;
     }
-    
-    else if(explored[i]==1) printf("->vertex %d is allready in the tree , so im skiping it \n",i);
-    else if(dis_mat[new_added_vertex][i]==0) printf("->There is no path between my new vertex %d and %d,so skiping it \n",new_added_vertex,i);
-    else printf("->The new path length between %d and %d seems to be higher than the existing one so skiping it \n",i,new_added_vertex);
-    
-    printf("\n");
-    
-  }
+   }
 }
 
 void prins_algo()
@@ -66,12 +56,9 @@ void prins_algo()
     {
       
       next=next_vertex();
-      printf("->I found the %d minimum,its  vertex %d \n",i+1,next);
       explored[next]=1;
-      printf("->Let me find new connections with this new vertex %d \n",next);
       update_keys(next);
-      printf("\n");
-      printf("\n");
+      
     }
 }
 
