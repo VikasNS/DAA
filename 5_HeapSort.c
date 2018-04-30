@@ -16,8 +16,10 @@ int has_right_child(int parent)
 
 int max_ele_index(int parent)
 {
-    if(!has_left_child(parent)) return -1; //if there are no children
-    if(!has_right_child(parent) || heap[2*parent+1]>heap[2*parent+2]) return (2*parent+1); //if there is only left child or if left child is greater than right child
+    //if there are no children
+    if(!has_left_child(parent)) return -1; 
+    //if there is only left child or if left child is greater than right child
+    if(!has_right_child(parent) || heap[2*parent+1]>heap[2*parent+2]) return (2*parent+1); 
     return (2*parent+2); //if none of the above,its obvious that right child is greater
 }
 
@@ -31,7 +33,8 @@ void swap(int index,int child)
 void heapify(int index)
 {
     int child;
-    while(((child=max_ele_index(index))!=-1) && (heap[index]<heap[child])) //heapify untill there are children and we are out of order
+    //heapify untill there are children and we are out of order
+    while(((child=max_ele_index(index))!=-1) && (heap[index]<heap[child])) 
     {
         swap(index,child); //we swap with the max child to get the order back
         index=child; //we continue the same downwords
@@ -41,7 +44,8 @@ void heapify(int index)
 void build_heap()
 {
     int index=size/2-1; //index of last parent 
-    for(index;index>=0;index--) heapify(index); //heapify all the parents starting from the last parent
+    //heapify all the parents starting from the last parent
+    for(index;index>=0;index--) heapify(index); 
 }
 
 void heap_sort()
