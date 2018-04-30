@@ -1,73 +1,47 @@
-/******************************************************************************
-
-                            Online C Compiler.
-                Code, Compile, Run and Debug C program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
-#include <stdio.h>
-int weight[10];
-int value[10];
-int item_weight_matrix[10][10];
-
+#include<stdio.h>
 
 int max(int a,int b)
 {
     if(a>b) return a;
     return b;
 }
-
-int knapsack(int n,int w)
+int knapsack(int capacity,int weight[],int value[],int n)
 {
-    if(item_weight_matrix[n][w]==-1)
+    
+    int k[n+1][capacity+1];
+    int item,remainig_weight;
+    
+    for(item=0;item<=n;item++)
     {
-        if(weight[n]>w) item_weight_matrix[n][w]=knapsack(n-1,w);
-        else  item_weight_matrix[n][w]=max(knapsack(n-1,w),(value[n]+knapsack(n-1,w-weight[n])));
-    }
-    return item_weight_matrix[n][w];
-}
-
-void print_chosen(int n,int w)
-{
-    int i=n,j=w,k;
-    while(i>0 && j>0)
-    {
-        if(item_weight_matrix[i][j]!=item_weight_matrix[i-1][j]) 
+        for(remainig_weight=0;remainig_weight<=capacity;remainig_weight++)
         {
-            printf("item %d \n",i);
-            j=j-weight[i];
-        }
-        i--;
-    }
-    
-}
-
-int main()
-{
-    int n,i,j,w;
-    
-    printf("Enter the number of items");
-    scanf("%d",&n);
-    
-    for(i=0;i<=n;i++)
-    {
-        for(j=0;j<=n;j++)
-        {
-            if(i==0 || j==0) item_weight_matrix[i][j]=0;
-            else item_weight_matrix[i][j]=-1;
+            if(item==0 || remainig_weight == 0) k[item][remainig_weight]=0;
+            else if(weight[item]>remainig_weight) k[item][remainig_weight]=k[item-1][remainig_weight];
+            else  k[item][remainig_weight]=max( value[item]+k[item-1][remainig_weight-weight[item]] , k[item-1][remainig_weight]);
         }
     }
     
-    for(i=1;i<=n;i++)
-    {
-        printf("Enter the weight %d element");
-        scanf("%d",&weight[i]);
-        printf("Enter the value %d element");
-        scanf("%d",&value[i]);
-    }
+    int t;
+    remainig_weight=capacity;
     
-    knapsack(4,5);
-    print_chosen(4,5);
-    return 0;
+    printf("Items are ");
+    for(item=n;item>0;item--)
+    {
+        
+           if(k[item][remainig_weight]!=k[item-1][remainig_weight])
+           {
+               printf("%d ",item);
+               remainig_weight-=weight[item];
+           }
+    }
+    printf("\n");
+    return k[n][capacity];
+}
+
+void main()
+{
+    int value[4]={0,60, 100, 120};
+    int weight[4]={0,10, 20, 30};
+    int i,capacity=50,n=3;
+    printf("The total profit %d ",knapsack(capacity,weight,value,n));
 }
