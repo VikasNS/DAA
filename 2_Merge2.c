@@ -17,7 +17,7 @@ void merge(int arr[],int left_start,int left_end,int right_start,int right_end)
     while(l<=left_end) temp[k++]=arr[l++];
     while(r<=right_end) temp[k++]=arr[r++];
        k=0;
-    //printf("%d %d",left_start,right_end);
+    
     for(l=left_start;l<=right_end;l++) arr[l]=temp[k++];
 }
 
