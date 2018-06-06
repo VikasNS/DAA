@@ -42,14 +42,17 @@ If no conflict for desired postion returns 1 otherwise returns 0*/
 int place(int row,int column)
 {
  int i;
+ //We have a pair of row and column given as parameter to our function
+ //We need to check if any conflicts exits or not
  //only ask permission for rows above it so its row-1
+ //We iterate through all the rows,i represents a row and board[i] represents the column in that ith row where queen is placed
  for(i=1;i<=row-1;++i)
  {
   //checking column and digonal conflicts
-  if(board[i]==column)
+  if(board[i]==column) //As we iterate ,board[i] gives all the columns in which we have queens and if a queen is allready placed in the new column in which we are trying to place the next queen,we return 0
    return 0;
   else
-   if(abs(board[i]-column)==abs(i-row))
+   if(abs(board[i]-column)==abs(i-row)) //For diagonal conflict
     return 0;
  }
  
@@ -65,10 +68,10 @@ void queen(int row,int n)
   if(place(row,column))
   {
    board[row]=column; //no conflicts so place queen
-   if(row==n) //dead end
-    print(n); //printing the board configuration
-   else //try queen with next position
-    queen(row+1,n);
+   if(row==n) //dead end , we have completed placing all queens , so we print it.
+      print(n); //printing the board configuration
+   else //try queen with next position 
+      queen(row+1,n);  //ie we continue placing new queen in next row
   }
  }
 }
