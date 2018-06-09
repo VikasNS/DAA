@@ -19,7 +19,7 @@ int max_ele_index(int parent)
     //if there are no children
     if(!has_left_child(parent)) return -1; 
     //if there is only left child or if left child is greater than right child
-    if(!has_right_child(parent) || heap[2*parent+1]>heap[2*parent+2]) return (2*parent+1); 
+    else if(!has_right_child(parent) || heap[2*parent+1]>heap[2*parent+2]) return (2*parent+1); 
     return (2*parent+2); //if none of the above,its obvious that right child is greater
 }
 
