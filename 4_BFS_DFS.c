@@ -60,9 +60,18 @@ void bfs(int index)
 
 int main()
 {
-    
-    dfs(0);
+    int i,j;
+    for(i=0;i<5;i++)
+    {
+        if(!bfs_visited[i])
+             bfs(i);
+    }
+   
     printf("\n");
-    bfs(0);
+    for(i=0;i<5;i++)
+    {
+        if(!dfs_visited[i])
+             dfs(i);
+    }
     return 0;
 }
