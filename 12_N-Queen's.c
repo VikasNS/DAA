@@ -21,7 +21,7 @@ void print(int n)
  int i,j;
  printf("\n\nSolution %d:\n\n",++count);
  
- for(i=1;i<=n;++i)
+ for(i=1;i<=n;i++)
   printf("\t%d",i);
  
  for(i=1;i<=n;++i)
