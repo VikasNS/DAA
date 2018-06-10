@@ -57,11 +57,12 @@ void krushkal()
         t_v1=whos_my_parent(t_v1);
         t_v2=whos_my_parent(t_v2);
         
-       if(!forms_cycle(t_v1,t_v2)) printf("%d edge between %d --> %d : %d \n",i,min_v1+1,min_v2+1,current_edge_cost);
-
-        
-        adj_mat[min_v1][min_v2]=adj_mat[min_v2][min_v1]=999;
-        i++;
+       if(!forms_cycle(t_v1,t_v2)) 
+       {
+         printf("%d edge between %d --> %d : %d \n",i,min_v1+1,min_v2+1,current_edge_cost);
+         adj_mat[min_v1][min_v2]=adj_mat[min_v2][min_v1]=999;
+         i++;
+       }
     }
 }
 
